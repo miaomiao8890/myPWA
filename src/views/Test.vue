@@ -1,6 +1,6 @@
 <template>
-  <div class="home-page">
-    <ul class="home-list">
+  <div class="test-page">
+    <ul class="test-list">
       <ListItem v-for="item in homeList"
         :key="item.cid"
         :item="item">
@@ -44,11 +44,11 @@
 </script>
 
 <style>
-  .home-page {
+  .test-page {
     padding: 20px;
+    background-color: #eee;
   }
-  .home-list {
-    background-color: #fff;
+  .test-list {
     position: relative;
     z-index: 10;
     font-size: 22px;
