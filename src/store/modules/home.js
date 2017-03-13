@@ -32,7 +32,7 @@ const mutations = {
   [types.HOME_DATA_REQUESTING] (state) {
     state.isHomeDataRequesting = true
   },
-  [types.FETCH_HOME_INIT_DATA_SUCCESS] (state, data) { 
+  [types.FETCH_HOME_INIT_DATA_SUCCESS] (state, data) {
     state.homeList = data
     state.isHomeDataRequesting = false
     state.getIsHomeInitDataLoaded = true
