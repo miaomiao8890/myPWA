@@ -1,5 +1,5 @@
 const path = require('path')
-const vueConfig = require('./vue-loader.config') 
+const vueConfig = require('./vue-loader.config')
 
 module.exports = {
   devtool: '#source-map',
