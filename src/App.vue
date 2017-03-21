@@ -3,7 +3,7 @@
     <header class="header">
       <div class="inner">
         <router-link to="/">Home</router-link>
-        <router-link to="/test">Test</router-link>
+        <!-- <router-link to="/test">Test</router-link> -->
       </div>
     </header>
     <transition name="fade" mode="out-in">
@@ -25,17 +25,24 @@
   img{display:block}
   html, body { height: 100%; font-family: Roboto,Tahoma,Arial,'Droid Sans','Helvetica Neue','Droid Sans Fallback','Heiti SC','Hiragino Sans GB',"Microsoft YaHei",Simsun,sans-self; }
   .clearfix:after{content: ''; display: block; overflow: hidden; visibility: hidden; clear: both;}
-  body { background-color: #f6f6f8; max-width: 640px; margin: 0 auto; color:#222; font-size: 0.875rem; }
+  body { background-color: #fff; max-width: 640px; margin: 0 auto; color:#222; font-size: 0.875rem; }
   #app { height: 100%; }
   .view {
     background-color: #fff;
-    height: 100%;
+    min-height: 100%;
     max-width: 640px;
     margin: 0 auto;
     position: relative;
+    margin-top: 52px;
   }
   .header {
-    background-color: #ff6600;
+    /*background-color: #ff6600;*/
+    background-color: #260e08;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
   }
   .header .inner {
     padding: 10px;

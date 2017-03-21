@@ -19,10 +19,23 @@ const getters = {
 const actions = {
   fetchHomeInitData ({ commit }) {
     commit(types.HOME_DATA_REQUESTING)
-    return fetch('http://123.57.21.57:8011/vuedemo/story.json')
+    return fetch('http://www.chrislion.com/pwa/beauty/photos?n=0')
         .then(res => res.json())
         .then(data => {
-          commit(types.FETCH_HOME_INIT_DATA_SUCCESS, data.data)
+          if (data.status_code == 200)
+            commit(types.FETCH_HOME_INIT_DATA_SUCCESS, data.result)
+        })
+  },
+  fetchHomeMoreData ({ commit }, opt) {
+    return fetch('http://www.chrislion.com/pwa/beauty/photos?n=' + opt.page)
+        .then(res => res.json())
+        .then(data => {
+          if (data.status_code == 200) {
+            commit(types.FETCH_HOME_MORE_DATA_SUCCESS, data.result)
+            if (opt.callback) {
+              opt.callback()
+            }
+          }
         })
   },
 }
@@ -36,6 +49,9 @@ const mutations = {
     state.homeList = data
     state.isHomeDataRequesting = false
     state.getIsHomeInitDataLoaded = true
+  },
+  [types.FETCH_HOME_MORE_DATA_SUCCESS] (state, data) {
+    state.homeList = data
   },
 }
 

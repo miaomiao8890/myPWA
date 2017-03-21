@@ -1,6 +1,7 @@
 	<template>
   <li class="story-item">
-  	<p>{{ item.cid }}</p>
+  	<p>{{ item.name }}</p>
+    <img :src="item.previewimg">
   </li>
 </template>
 <script>
