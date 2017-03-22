@@ -17,13 +17,17 @@ const getters = {
 
 // actions
 const actions = {
-  fetchHomeInitData ({ commit }) {
+  fetchHomeInitData ({ commit }, opt) {
     commit(types.HOME_DATA_REQUESTING)
     return fetch('http://www.chrislion.com/pwa/beauty/photos?n=0')
         .then(res => res.json())
         .then(data => {
-          if (data.status_code == 200)
+          if (data.status_code == 200) {
             commit(types.FETCH_HOME_INIT_DATA_SUCCESS, data.result)
+            if (opt.callback) {
+              opt.callback()
+            }
+          }
         })
   },
   fetchHomeMoreData ({ commit }, opt) {
@@ -48,7 +52,7 @@ const mutations = {
   [types.FETCH_HOME_INIT_DATA_SUCCESS] (state, data) {
     state.homeList = data
     state.isHomeDataRequesting = false
-    state.getIsHomeInitDataLoaded = true
+    state.isHomeInitDataLoaded = true
   },
   [types.FETCH_HOME_MORE_DATA_SUCCESS] (state, data) {
     state.homeList = data

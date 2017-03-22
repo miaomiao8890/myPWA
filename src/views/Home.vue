@@ -102,7 +102,7 @@
         isHomeDataRequesting: 'getIsHomeDataRequesting'
       })
     },
-    preFetch: fetchHomeInitData,
+    // preFetch: fetchHomeInitData,
     data() {
       return {
         align: 'center',
@@ -114,27 +114,28 @@
     },
     beforeMount() {
       if (!this.isHomeInitDataLoaded) {
-        this.$store.dispatch('fetchHomeInitData')
+        this.$store.dispatch('fetchHomeInitData', {
+          callback: () => {
+            this.items = setItems(this.homeList)
+          }
+        })
       }
       this.currentPage++
     },
     mounted() {
-      if (this.homeList) {
-        this.items = setItems(this.homeList)
-      }
       window.addEventListener('scroll', this.handleScroll)
     },
     methods: {
       handleScroll() {
         if (getScrollTop() + getClientHeight() == getScrollHeight()) {
           if (!this.isLoading) {
-            console.log(this.currentPage)
             this.isLoading = true
             this.$store.dispatch("fetchHomeMoreData", {
               page: this.currentPage,
               callback: () => {
                 this.isLoading = false
                 this.items = this.items.concat(setItems(this.homeList))
+                this.currentPage++
               }
             })
           }
