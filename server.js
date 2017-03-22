@@ -11,8 +11,8 @@ const app = express()
 
 // https
 const https = require('https')
-const hskey  = fs.readFileSync('hacksparrow-key.pem')
-const hscert = fs.readFileSync('hacksparrow-cert.pem')
+const hskey  = fs.readFileSync('/usr/local/ssl/hacksparrow-key.pem')
+const hscert = fs.readFileSync('/usr/local/ssl/hacksparrow-cert.pem')
 const credentials = {key: hskey, cert: hscert}
 const httpServer = http.createServer(app);
 const httpsServer = https.createServer(credentials, app)
@@ -118,7 +118,7 @@ app.get('*', (req, res) => {
 })
 
 const port = process.env.PORT || 3000
-const sslport = process.env.PORT || 443
+const sslport = process.env.PORT || 3001
 // app.listen(port, () => {
 //   console.log(`server started at localhost:${port}`)
 // })

@@ -19,7 +19,7 @@ const getters = {
 const actions = {
   fetchHomeInitData ({ commit }, opt) {
     commit(types.HOME_DATA_REQUESTING)
-    return fetch('http://www.chrislion.com/pwa/beauty/photos?n=0')
+    return fetch('//www.chrislion.com/pwa/beauty/photos?n=0')
         .then(res => res.json())
         .then(data => {
           if (data.status_code == 200) {
@@ -31,7 +31,7 @@ const actions = {
         })
   },
   fetchHomeMoreData ({ commit }, opt) {
-    return fetch('http://www.chrislion.com/pwa/beauty/photos?n=' + opt.page)
+    return fetch('//www.chrislion.com/pwa/beauty/photos?n=' + opt.page)
         .then(res => res.json())
         .then(data => {
           if (data.status_code == 200) {
