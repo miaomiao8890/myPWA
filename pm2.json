@@ -1,0 +1,7 @@
+  [{
+    "name": "pwa.chrislion.com",
+    "script": "/root/myPWA/server.js",
+    "env": {
+      "NODE_ENV": "production"
+    }
+  }]
