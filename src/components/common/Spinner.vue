@@ -3,15 +3,7 @@
 </template>
 
 <style>
-	.spinner-box {
-    position: fixed;
-    left: 50%;
-    margin-left: -16px;
-    top: 200px;
-    text-align: center;
-    z-index: 1;
-  }
-  .spinner-box .spinner {
+  .spinner {
     width: 32px;
     height: 32px;
 

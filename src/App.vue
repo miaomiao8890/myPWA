@@ -128,8 +128,8 @@
     box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.4);
     -webkit-box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.4);
     z-index: 1001;
-    transform: translateX(-17.5rem) translateY(0) translateZ(0);
-    -webkit-transform: translateX(-17.5rem) translateY(0) translateZ(0);
+    transform: translateX(-18.5rem) translateY(0) translateZ(0);
+    -webkit-transform: translateX(-18.5rem) translateY(0) translateZ(0);
     -webkit-transition: transform .3s cubic-bezier(0, 0, 0.30, 1);
     -webkit-transition: -webkit-transform .3s cubic-bezier(0, 0, 0.30, 1);
     transition: -webkit-transform .3s cubic-bezier(0, 0, 0.30, 1);
