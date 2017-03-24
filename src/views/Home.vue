@@ -37,7 +37,7 @@
 
     <div class="home-detail" v-show="isDetailShow">
       <div class="home-detail-bg"></div>
-      <div class="home-detail-header"><i class="home-detail-back-btn" @click="handleDetailHide"></i></div>
+      <div class="home-detail-header" v-show="isDetailHeadShow"><i class="home-detail-back-btn" @click="handleDetailHide"></i></div>
       <ul id="detailList">
         <li
           v-for="(detailItem, detailIndex) in items"
@@ -96,8 +96,10 @@
         currentPage: 0,
         isLoading: false,
         index: 0,
-        isDetailShow: false, 
-        currentIndex: null
+        isDetailShow: false,
+        isDetailHeadShow: false,
+        currentIndex: null,
+        slide: null
       }
     },
     beforeMount() {
@@ -137,10 +139,37 @@
         console.log(this.items[i])
         this.currentIndex = i
         this.isDetailShow = true
-        Slide({element: 'detailList', successCallback: () => {}})
+        if (!this.slide) {
+          this.slide = Slide({
+            element: 'detailList',
+            successCallback: (type) => {
+              if (type == 'prev') {
+                this.currentIndex--
+                if (this.currentIndex < 0) {
+                  this.currentIndex == 0
+                }
+              } else if (type == 'next') {
+                this.currentIndex++
+                if (this.currentIndex == (this.items.length - 3)) {
+                  this.$store.dispatch("fetchHomeMoreData", {
+                    page: this.currentPage,
+                    callback: () => {
+                      this.isLoading = false
+                      this.items = this.items.concat(this._setItems(this.homeList))
+                      this.currentPage++
+                    }
+                  })
+                }
+              } else {
+                this.isDetailHeadShow = (this.isDetailHeadShow ? false : true)
+              }
+            }
+          })
+        }
       },
       handleDetailHide() {
         this.isDetailShow = false
+        this.isDetailHeadShow = false
       },
 
       _setItems(data) {
